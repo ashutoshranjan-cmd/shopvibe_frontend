@@ -58,7 +58,7 @@ export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async (id) => {
     const result = await axios.delete(
-      `http://localhost:5000/api/admin/products/delete/${id}`
+      `https://shop-vibe-server.onrender.com/api/admin/products/delete/${id}`
     );
 
     return result?.data;
