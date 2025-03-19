@@ -385,28 +385,65 @@ function SearchProducts() {
     setShowMicPopup(false);
   }
 
-  const handleAddToCart = async (productId) => {
-    if (!user) {
-      toast({
-        title: "Please login to add items to cart",
-        variant: "destructive",
-      });
-      return;
+  // const handleAddToCart = async (productId) => {
+  //   console.log("this is ",productId)
+  //   if (!user) {
+  //     toast({
+  //       title: "Please login to add items to cart",
+  //       variant: "destructive",
+  //     });
+  //     return;
+  //   }
+
+  //   try {
+  //     await dispatch(addToCart({ productId, quantity: 1 }));
+  //     await dispatch(fetchCartItems());
+  //     toast({
+  //       title: "Product added to cart successfully",
+  //     });
+  //   } catch (error) {
+  //     toast({
+  //       title: "Failed to add product to cart",
+  //       variant: "destructive",
+  //     });
+  //   }
+  // };
+  function handleAddtoCart(getCurrentProductId, getTotalStock) {
+    console.log(cartItems);
+    let getCartItems = cartItems.items || [];
+
+    if (getCartItems.length) {
+      const indexOfCurrentItem = getCartItems.findIndex(
+        (item) => item.productId === getCurrentProductId
+      );
+      if (indexOfCurrentItem > -1) {
+        const getQuantity = getCartItems[indexOfCurrentItem].quantity;
+        if (getQuantity + 1 > getTotalStock) {
+          toast({
+            title: `Only ${getQuantity} quantity can be added for this item`,
+            variant: "destructive",
+          });
+
+          return;
+        }
+      }
     }
 
-    try {
-      await dispatch(addToCart({ productId, quantity: 1 }));
-      await dispatch(fetchCartItems());
-      toast({
-        title: "Product added to cart successfully",
-      });
-    } catch (error) {
-      toast({
-        title: "Failed to add product to cart",
-        variant: "destructive",
-      });
-    }
-  };
+    dispatch(
+      addToCart({
+        userId: user?.id,
+        productId: getCurrentProductId,
+        quantity: 1,
+      })
+    ).then((data) => {
+      if (data?.payload?.success) {
+        dispatch(fetchCartItems(user?.id));
+        toast({
+          title: "Product is added to cart",
+        });
+      }
+    });
+  }
 
   const handleGetProductDetails = async (productId) => {
     try {
@@ -489,12 +526,17 @@ function SearchProducts() {
           ) : (
             <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {searchResults.map((item) => (
+                // <ShoppingProductTile
+                //   key={item.id}
+                //   handleAddtoCart={() => handleAddToCart(item.id)}
+                //   product={item}
+                //   handleGetProductDetails={() => handleGetProductDetails(item.id)}
+                // />
                 <ShoppingProductTile
-                  key={item.id}
-                  handleAddtoCart={() => handleAddToCart(item.id)}
-                  product={item}
-                  handleGetProductDetails={() => handleGetProductDetails(item.id)}
-                />
+                handleAddtoCart={handleAddtoCart}
+                product={item}
+                handleGetProductDetails={handleGetProductDetails}
+              />
               ))}
             </motion.div>
           )}
