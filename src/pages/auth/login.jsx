@@ -51,7 +51,7 @@ function AuthLogin() {
   }
 
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:5000/api/oauth/google"
+    window.location.href = "https://shop-vibe-server.onrender.com/api/oauth/google"
 
     console.log("Google Login Clicked");
     // Integrate Google Sign-In (OAuth/Firebase/Auth API)
