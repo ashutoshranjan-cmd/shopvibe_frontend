@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -27,6 +27,9 @@ function AuthLogin() {
   const dispatch = useDispatch();
   const { toast } = useToast();
   const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [dispatch]);
 
   async function onSubmit(event) {
     event.preventDefault();
