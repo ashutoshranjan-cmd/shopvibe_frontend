@@ -18,6 +18,7 @@ import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { getFeatureImages } from "@/store/common-slice";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
+import { checkAuth } from "@/store/auth-slice";
 import nike from '../../assets/nike.png'
 import adidas from '../../assets/adidas.png'
 import levis from '../../assets/levis.png'
@@ -68,6 +69,16 @@ function ShoppingHome() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { toast } = useToast();
+   
+  useEffect(() => {
+    // ✅ Automatically check auth AFTER login
+    const token = document.cookie.includes("token"); // Check if token exists
+    console.log("the token is ",token);
+    
+    if (token) {
+      dispatch(checkAuth()); 
+    }
+  }, []);
 
   const handleNavigateToListingPage = (getCurrentItem, section) => {
     sessionStorage.removeItem("filters");
