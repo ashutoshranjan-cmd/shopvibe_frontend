@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
+import Cookies from "js-cookie"
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Airplay, BabyIcon, ChevronLeftIcon, ChevronRightIcon,
@@ -72,7 +73,8 @@ function ShoppingHome() {
    
   useEffect(() => {
     // ✅ Automatically check auth AFTER login
-    const token = document.cookie.includes("token"); // Check if token exists
+    // const token = document.cookie.includes("token"); // Check if token exists
+    const token = Cookies.get("token");
     console.log("the token is ",token);
     
     if (token) {
