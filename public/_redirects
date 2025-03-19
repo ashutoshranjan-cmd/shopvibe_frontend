@@ -1,1 +1,7 @@
-/*    /index.html   200
+
+# Redirect API requests to backend
+/api/* https://shop-vibe-server.onrender.com/api/:splat 200
+
+# Redirect all other requests to index.html (For SPA)
+/* /index.html 200
+
