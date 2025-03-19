@@ -24,7 +24,7 @@ const fadeInUp = {
 
 function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoad, setIsLoading] = useState(false);
   const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { toast } = useToast();
@@ -33,7 +33,7 @@ function AuthLogin() {
     if (!isAuthenticated && !isLoading) { // ✅ Only dispatch if not already authenticated
       dispatch(checkAuth());
     }
-  }, [dispatch, isAuthenticated, isLoading]);
+  }, [dispatch, isAuthenticated, isLoad]);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -100,11 +100,11 @@ function AuthLogin() {
       >
         <CommonForm
           formControls={loginFormControls}
-          buttonText={isLoading ? "Signing in..." : "Sign In"}
+          buttonText={isLoad ? "Signing in..." : "Sign In"}
           formData={formData}
           setFormData={setFormData}
           onSubmit={onSubmit}
-          disabled={isLoading}
+          disabled={isLoad}
         />
 
         {/* Forgot Password Link */}
