@@ -1,9 +1,8 @@
 
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch ,useSelector} from "react-redux";
-import { checkAuth } from "@/store/auth-slice";
+import { useDispatch } from "react-redux";
 import { useToast } from "@/components/ui/use-toast";
 import CommonForm from "@/components/common/form";
 import { loginFormControls } from "@/config";
@@ -24,16 +23,11 @@ const fadeInUp = {
 
 function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
-  const [isLoad, setIsLoading] = useState(false);
-  const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const { toast } = useToast();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!isAuthenticated && !isLoading) { // ✅ Only dispatch if not already authenticated
-      dispatch(checkAuth());
-    }
-  }, [dispatch, isAuthenticated, isLoad]);
+  
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -100,11 +94,11 @@ function AuthLogin() {
       >
         <CommonForm
           formControls={loginFormControls}
-          buttonText={isLoad ? "Signing in..." : "Sign In"}
+          buttonText={isLoading ? "Signing in..." : "Sign In"}
           formData={formData}
           setFormData={setFormData}
           onSubmit={onSubmit}
-          disabled={isLoad}
+          disabled={isLoading}
         />
 
         {/* Forgot Password Link */}
