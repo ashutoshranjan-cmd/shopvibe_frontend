@@ -3,11 +3,10 @@ import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { checkAuth } from "@/store/auth-slice";
 import { useToast } from "@/components/ui/use-toast";
 import CommonForm from "@/components/common/form";
 import { loginFormControls } from "@/config";
-import { loginUser } from "@/store/auth-slice";
+import { loginUser,checkAuth } from "@/store/auth-slice";
 import { FcGoogle } from "react-icons/fc";
 import { X } from "lucide-react";
 
