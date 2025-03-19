@@ -25,6 +25,7 @@ const fadeInUp = {
 function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
+  const { isAuthenticated, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { toast } = useToast();
   const navigate = useNavigate();
