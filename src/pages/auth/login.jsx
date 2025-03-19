@@ -1,8 +1,9 @@
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { checkAuth } from "@/store/auth-slice";
 import { useToast } from "@/components/ui/use-toast";
 import CommonForm from "@/components/common/form";
 import { loginFormControls } from "@/config";
@@ -28,7 +29,13 @@ function AuthLogin() {
   const { toast } = useToast();
   const navigate = useNavigate();
   
-
+  useEffect(() => {
+    // ✅ Automatically check auth AFTER login
+    const token = document.cookie.includes("token"); // Check if token exists
+    if (token) {
+      dispatch(checkAuth()); 
+    }
+  }, [dispatch]);
   async function onSubmit(event) {
     event.preventDefault();
     setIsLoading(true);
