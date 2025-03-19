@@ -29,8 +29,10 @@ function AuthLogin() {
   const { toast } = useToast();
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(checkAuth());
-  }, [dispatch]);
+    if (!isAuthenticated && !isLoading) { // ✅ Only dispatch if not already authenticated
+      dispatch(checkAuth());
+    }
+  }, [dispatch, isAuthenticated, isLoading]);
 
   async function onSubmit(event) {
     event.preventDefault();
