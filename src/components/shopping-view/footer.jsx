@@ -21,36 +21,36 @@ const ShopFooter = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gray-900 text-gray-300 pt-12">
+    <footer className="bg-gray-900 text-gray-300 w-full pt-12">
       {/* Features Section */}
-      <div className="container mx-auto px-4 mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="flex items-center gap-4 p-6 bg-gray-800 rounded-lg shadow-sm">
-            <Truck className="w-10 h-10 text-primary text-white " />
+      <div className="container mb-12 mx-auto px-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 md:grid-cols-2">
+          <div className="flex bg-gray-800 p-6 rounded-lg shadow-sm gap-4 items-center">
+            <Truck className="h-10 text-primary text-white w-10" />
             <div>
-              <h3 className="font-bold text-white">Free Shipping</h3>
-              <p className="text-sm text-gray-400">On orders over $100</p>
+              <h3 className="text-white font-bold">Free Shipping</h3>
+              <p className="text-gray-400 text-sm">On orders over $100</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-6 bg-gray-800 rounded-lg shadow-sm">
-            <ShieldCheck className="w-10 h-10 text-primary  text-white " />
+          <div className="flex bg-gray-800 p-6 rounded-lg shadow-sm gap-4 items-center">
+            <ShieldCheck className="h-10 text-primary text-white w-10" />
             <div>
-              <h3 className="font-bold text-white">Secure Payment</h3>
-              <p className="text-sm text-gray-400">100% secure payments</p>
+              <h3 className="text-white font-bold">Secure Payment</h3>
+              <p className="text-gray-400 text-sm">100% secure payments</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-6 bg-gray-800 rounded-lg shadow-sm">
-            <HeartHandshake className="w-10 h-10 text-primary  text-white " />
+          <div className="flex bg-gray-800 p-6 rounded-lg shadow-sm gap-4 items-center">
+            <HeartHandshake className="h-10 text-primary text-white w-10" />
             <div>
-              <h3 className="font-bold text-white">24/7 Support</h3>
-              <p className="text-sm text-gray-400">Dedicated support</p>
+              <h3 className="text-white font-bold">24/7 Support</h3>
+              <p className="text-gray-400 text-sm">Dedicated support</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 p-6 bg-gray-800 rounded-lg shadow-sm">
-            <CreditCard className="w-10 h-10 text-primary  text-white " />
+          <div className="flex bg-gray-800 p-6 rounded-lg shadow-sm gap-4 items-center">
+            <CreditCard className="h-10 text-primary text-white w-10" />
             <div>
-              <h3 className="font-bold text-white">Easy Returns</h3>
-              <p className="text-sm text-gray-400">30 day returns policy</p>
+              <h3 className="text-white font-bold">Easy Returns</h3>
+              <p className="text-gray-400 text-sm">30 day returns policy</p>
             </div>
           </div>
         </div>
@@ -58,14 +58,14 @@ const ShopFooter = () => {
 
       {/* Main Footer Content */}
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 md:grid-cols-2 pb-12">
           {/* Brand Section */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              {/* <HousePlug className="h-6 w-6 text-white" />
+            <div className="flex gap-2 items-center">
+              {/* <HousePlug className="h-6 text-white w-6" />
                */}
                <img src={Shopvibe} className='mt-[-6rem]' alt="shop-vibe logo" />
-              {/* <span className="font-bold text-xl text-white">Shop Vibe</span> */}
+              {/* <span className="text-white text-xl font-bold">Shop Vibe</span> */}
             </div>
             <p className="text-gray-400">
               Your one-stop destination for trendy and quality products. Shop with confidence and style.
@@ -73,7 +73,7 @@ const ShopFooter = () => {
             <div className="flex space-x-4">
               {[Facebook, Twitter, Instagram, Youtube].map((Icon, index) => (
                 <a key={index} href="#" className="text-gray-400 hover:text-primary transition-colors">
-                  <Icon className="w-5 h-5" />
+                  <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
@@ -81,7 +81,7 @@ const ShopFooter = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-white">Quick Links</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {["Home", "Products", "About Us", "Contact", "FAQ"].map((item) => (
                 <li key={item}>
@@ -95,9 +95,9 @@ const ShopFooter = () => {
 
           {/* Categories */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-white">Categories</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Categories</h3>
             <ul className="space-y-2">
-              {["Electronics", "Fashion", "Home & Living", "Beauty", "Sports"].map((item) => (
+              {["Men", "Women", "Kids", "Beauty", "Sports"].map((item) => (
                 <li key={item}>
                   <Link to="#" className="text-gray-400 hover:text-primary transition-colors">
                     {item}
@@ -109,13 +109,13 @@ const ShopFooter = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-white">Contact Us</h3>
+            <h3 className="text-lg text-white font-bold mb-4">Contact Us</h3>
             <ul className="space-y-4">
-              {[{icon: MapPin, text: "123 Shopping Street, NY 10001, USA"},
+              {[{icon: MapPin, text: "1275A Kharar Garden Colony, Punjab 140301, Punjab"},
                 {icon: Phone, text: "+1 234 567 8900"},
                 {icon: Mail, text: "support@shopvibe.com"}].map(({icon: Icon, text}, index) => (
-                <li key={index} className="flex items-center gap-3 text-gray-400">
-                  <Icon className="w-5 h-5 text-primary" />
+                <li key={index} className="flex text-gray-400 gap-3 items-center">
+                  <Icon className="h-5 text-primary w-5" />
                   <span>{text}</span>
                 </li>
               ))}
@@ -125,13 +125,13 @@ const ShopFooter = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-700">
+      <div className="border-gray-700 border-t">
         <div className="container mx-auto px-4">
-          <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col justify-between gap-4 items-center md:flex-row py-6">
             <p className="text-gray-400 text-sm">© {currentYear} Shop Vibe. All rights reserved.</p>
-            <div className="flex items-center gap-6">
+            <div className="flex gap-6 items-center">
               {["Privacy Policy", "Terms of Service", "Cookies Settings"].map((item, index) => (
-                <Link key={index} to="#" className="text-sm text-gray-400 hover:text-primary transition-colors">
+                <Link key={index} to="#" className="text-gray-400 text-sm hover:text-primary transition-colors">
                   {item}
                 </Link>
               ))}
