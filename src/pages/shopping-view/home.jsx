@@ -318,6 +318,7 @@ import levis from '../../assets/levis.png'
 import puma from '../../assets/puma.png'
 import zara from '../../assets/zara.png'
 import hm from '../../assets/hm.png'
+import { Helmet } from "react-helmet-async";
 
 // Lazy load components
 const ShoppingProductTile = lazy(() => import("@/components/shopping-view/product-tile"));
@@ -509,6 +510,34 @@ function ShoppingHome() {
       exit="exit"
       className="flex flex-col min-h-screen"
     >
+       <Helmet>
+      {/* Primary Meta Tags */}
+      <title>Shop Vibe - Trendy Fashion & Accessories at Best Prices</title>
+      <meta name="description" content="Shop the latest fashion items and accessories at Shop Vibe. Discover stylish watches, belts, handbags, and more at unbeatable prices!" />
+      <meta name="keywords" content="fashion, accessories, watches, belts, handbags, trendy clothing, online shopping, Shop Vibe, best fashion deals" />
+      <meta name="author" content="Shop Vibe Team" />
+      <meta name="robots" content="index, follow" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      {/* Open Graph / Facebook Meta Tags */}
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Shop Vibe - Trendy Fashion & Accessories at Best Prices" />
+      <meta property="og:description" content="Upgrade your style with premium fashion accessories at Shop Vibe. Get the best deals on watches, belts, and more!" />
+      <meta property="og:image" content="https://shop-vibe-ecom.netlify.app/og-image.jpg" />
+      <meta property="og:url" content="https://shop-vibe-ecom.netlify.app/" />
+      <meta property="og:site_name" content="Shop Vibe" />
+
+      {/* Twitter Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Shop Vibe - Trendy Fashion & Accessories at Best Prices" />
+      <meta name="twitter:description" content="Discover trendy watches, belts, and fashion accessories at Shop Vibe. Best quality, best prices!" />
+      <meta name="twitter:image" content="https://shop-vibe-ecom.netlify.app/twitter-image.jpg" />
+      <meta name="twitter:site" content="@yourtwitterhandle" />
+
+      {/* Favicon */}
+      <link rel="icon" href="/favicon.ico" />
+    </Helmet>
+      
       {/* Hero Section with Image Slider */}
       <motion.div 
         variants={fadeIn}
