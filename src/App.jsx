@@ -98,10 +98,11 @@
 // export default App;
 
 import React, { Suspense, lazy, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "@/components/ui/skeleton";
+import { initGA, logPageView } from "./GoogleAnalytics";
 
 // Eagerly loaded components
 import ShoppingLayout from "./components/shopping-view/layout";
@@ -149,6 +150,17 @@ function App() {
     (state) => state.auth
   );
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    initGA(); // Initialize GA
+    logPageView(); // Track initial page load
+  }, []);
+
+  useEffect(() => {
+    logPageView(); // Track every route change
+  }, [location]);
+
 
   useEffect(() => {
     dispatch(checkAuth());
