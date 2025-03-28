@@ -41,7 +41,7 @@ function ShoppingProductTile({
             </div>
           </motion.div>
 
-          {product?.totalStock === 0 ? (
+          {/* {product?.totalStock === 0 ? (
             <Badge className="absolute top-3 left-3 bg-red-500/90 hover:bg-red-600 text-white px-3 py-1 rounded-full shadow-lg">
               Out Of Stock
             </Badge>
@@ -50,6 +50,19 @@ function ShoppingProductTile({
               Only {product?.totalStock} left
             </Badge>
           ) : product?.salePrice > 0 ? (
+            <Badge className="absolute top-3 left-3 bg-green-500/90 hover:bg-green-600 text-white px-3 py-1 rounded-full shadow-lg">
+              Sale
+            </Badge>
+          ) : null} */}
+          {product?.totalStock === 0 ? (
+            <Badge className="absolute top-3 left-3 bg-red-500/90 hover:bg-red-600 text-white px-3 py-1 rounded-full shadow-lg">
+              Out Of Stock
+            </Badge>
+          ) : product?.totalStock < 10 ? (
+            <Badge className="absolute top-3 left-3 bg-amber-500/90 hover:bg-amber-600 text-white px-3 py-1 rounded-full shadow-lg">
+              Only {product?.totalStock} left
+            </Badge>
+          ) : product?.salePrice < product?.price ? (
             <Badge className="absolute top-3 left-3 bg-green-500/90 hover:bg-green-600 text-white px-3 py-1 rounded-full shadow-lg">
               Sale
             </Badge>
