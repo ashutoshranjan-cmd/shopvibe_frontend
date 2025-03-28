@@ -195,6 +195,13 @@ export const addressFormControls = [
     placeholder: "Enter your name",
   },
   {
+    label: "Gender",
+    name: "gender",
+    componentType: "input",
+    type: "text",
+    placeholder: "Enter your gender",
+  },
+  {
     label: "Address",
     name: "address",
     componentType: "input",

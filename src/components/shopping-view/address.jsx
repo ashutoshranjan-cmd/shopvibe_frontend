@@ -14,6 +14,7 @@ import { useToast } from "../ui/use-toast";
 
 const initialAddressFormData = {
   name:"",
+  gender:"",
   address: "",
   city: "",
   phone: "",
@@ -92,7 +93,8 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
     setCurrentEditedId(getCurrentAddress?._id);
     setFormData({
       ...formData,
-      name: getCurrentAddress?.address,
+      name: getCurrentAddress?.name,
+      gender:getCurrentAddress?.gender,
       address: getCurrentAddress?.address,
       city: getCurrentAddress?.city,
       phone: getCurrentAddress?.phone,
@@ -111,7 +113,7 @@ function Address({ setCurrentSelectedAddress, selectedId }) {
     dispatch(fetchAllAddresses(user?.id));
   }, [dispatch]);
 
-  console.log(addressList, "addressList");
+  // console.log(addressList, "addressList");
 
   return (
     <Card>

@@ -51,6 +51,7 @@ const AddressCard = ({
           <div className="space-y-4">
             {[
               { label: "Name", value: addressInfo?.name },
+              { label: "Gender", value: addressInfo?.gender },
               { label: "Address", value: addressInfo?.address },
               { label: "City", value: addressInfo?.city },
               { label: "Pincode", value: addressInfo?.pincode },
