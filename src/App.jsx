@@ -103,6 +103,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./store/auth-slice";
 import { Skeleton } from "@/components/ui/skeleton";
 import { initGA, logPageView } from "./GoogleAnalytics";
+import vibe from './assets/shopvibe.png'
 
 // Eagerly loaded components
 import ShoppingLayout from "./components/shopping-view/layout";
@@ -137,12 +138,25 @@ const AdminFeatures = lazy(() => import("./pages/admin-view/features"));
 
 // Loading fallback component
 const LoadingFallback = () => (
+  // <div className="flex justify-center items-center min-h-screen">
+    
+  //   <div className="flex flex-col items-center gap-4">
+  //     <Skeleton className="w-[800px] h-[600px] bg-gray-200" />
+   
+  //     <div className="text-gray-500 flex">   <img src={vibe} alt="" />Loading...</div>
+  //   </div>
+  // </div>
   <div className="flex justify-center items-center min-h-screen">
-    <div className="flex flex-col items-center gap-4">
-      <Skeleton className="w-[800px] h-[600px] bg-gray-200" />
-      <div className="text-gray-500">Loading...</div>
+  <div className="flex flex-col items-center gap-4">
+    {/* <Skeleton className="w-[800px] h-[600px] bg-gray-200" /> */}
+    
+    <div className="flex flex-col items-center text-gray-500">
+      <img src={vibe} alt="" className="mb-2" /> 
+      <span>Loading...</span>
     </div>
   </div>
+</div>
+
 );
 
 function App() {
