@@ -150,7 +150,7 @@ function AuthRegister() {
       toast({
         title: data?.payload?.message,
         variant: data?.payload?.success ? "default" : "destructive",
-        className: data?.payload?.success ? "bg-green-50" : "bg-red-50",
+        className: data?.payload?.success ? "bg-green-50 text-black" : "bg-red-50 text-black",
       });
 
       if (data?.payload?.success) {
